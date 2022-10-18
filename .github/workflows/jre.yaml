@@ -9,8 +9,6 @@ on:
     paths:
       - "jre/**"
       - ".github/workflows/jre.yaml"
-      - "build-bin/jre.sh"
-
 
 jobs:
   images-build:
@@ -30,5 +28,5 @@ jobs:
         run: |
           sudo apt update && sudo apt install curl &&
           echo ${CONTAINER_PWD} | docker login ${CONTAINER_REGISTRY_URL} -u ${CONTAINER_USER} --password-stdin &&
-          chmod +x build-bin/ubuntu.sh &&
-          build-bin/ubuntu.sh
+          chmod +x jre/jre.sh &&
+          jre/jre.sh
