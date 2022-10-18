@@ -1,4 +1,4 @@
-name: build-jre-images
+name: build-jdk-images
 
 on:
   schedule:
@@ -7,8 +7,8 @@ on:
     branches: 
       - main
     paths:
-      - "jre/**"
-      - ".github/workflows/jre.yaml"
+      - "jdk/**"
+      - ".github/workflows/jdk.yaml"
 
 jobs:
   images-build:
@@ -28,5 +28,5 @@ jobs:
         run: |
           sudo apt update && sudo apt install curl &&
           echo ${CONTAINER_PWD} | docker login ${CONTAINER_REGISTRY_URL} -u ${CONTAINER_USER} --password-stdin &&
-          chmod +x jre/jre.sh &&
-          jre/jre.sh
+          chmod +x jdk/jdk.sh &&
+          jdk/jdk.sh
