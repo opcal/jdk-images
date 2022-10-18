@@ -1,4 +1,4 @@
-name: build-jre-images
+name: build-native-vm-images
 
 on:
   schedule:
