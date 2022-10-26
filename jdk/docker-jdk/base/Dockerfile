@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/opcal-project/containers/alpine:latest as builder
+FROM ghcr.io/opcal/alpine:latest as builder
 
 ARG JDK_URL
 
