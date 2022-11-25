@@ -37,6 +37,7 @@ LABEL Author="OPCAL"
 
 RUN apk --no-cache add ca-certificates \
         net-tools \
+		bc \
         curl; \
     update-ca-certificates; \
     rm -rf /var/cache/apk/*  

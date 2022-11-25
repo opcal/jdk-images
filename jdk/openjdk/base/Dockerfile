@@ -12,6 +12,7 @@ RUN set -eux; \
         gosu \
         netcat \
         dnsutils \
+        bc \
         curl; \
     apt-get -y autoclean; \
     apt-get -y autoremove; \
