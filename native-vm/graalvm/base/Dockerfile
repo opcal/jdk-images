@@ -18,7 +18,7 @@ FROM ${BASE_IMAGE}
 ARG GRAALVM_VERSION
 ARG JAVA_VERSION
 
-LABEL Author="OPCAL"
+LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 ENV JAVA_HOME=/opt/graalvm-ce-${JAVA_VERSION}-${GRAALVM_VERSION} \
     PATH="/opt/graalvm-ce-${JAVA_VERSION}-${GRAALVM_VERSION}/bin:$PATH"
