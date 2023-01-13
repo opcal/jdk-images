@@ -13,7 +13,7 @@ JDK_URL=https://github.com/adoptium/temurin17-binaries/releases/download/${URL_V
 
 ## https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.3%2B7/OpenJDK17U-jdk_x64_alpine-linux_hotspot_17.0.3_7.tar.gz
 
-# 17-jdk-focal-docker
+# 17-docker-jdk
 docker build \
     --build-arg JDK_URL=${JDK_URL} \
     --build-arg LATEST=${LATEST} \

@@ -13,7 +13,7 @@ JDK_URL=https://github.com/adoptium/temurin11-binaries/releases/download/${URL_V
 
 ## https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.15%2B10/OpenJDK11U-jdk_x64_alpine-linux_hotspot_11.0.15_10.tar.gz
 
-# 11-jdk-focal-docker
+# 11-docker-jdk
 docker build \
     --build-arg JDK_URL=${JDK_URL} \
     --build-arg LATEST=${LATEST} \
