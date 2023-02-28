@@ -7,7 +7,11 @@ echo " "
 echo 'build eclipse-temurin-11-jdk-alpine start'
 
 BASE_IMAGE=eclipse-temurin:11-jdk-alpine
-GOSU_VERSION=$(curl https://api.github.com/repos/tianon/gosu/releases/latest | grep tag_name | cut -d '"' -f 4)
+GOSU_VERSION=$(curl https://api.github.com/repos/tianon/gosu/releases/latest >> /dev/null 2>&1 | grep tag_name | cut -d '"' -f 4)
+
+echo "BASE_IMAGE=[${BASE_IMAGE}] GOSU_VERSION=[${GOSU_VERSION}]"
+echo " "
+echo " "
 
 # 11-jdk-alpine
 docker build \
