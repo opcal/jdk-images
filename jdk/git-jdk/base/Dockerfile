@@ -7,7 +7,7 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
         ca-certificates curl
 
-RUN curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh | sudo bash
+RUN curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh | bash
 
 
 FROM ${BASE_IMAGE}
