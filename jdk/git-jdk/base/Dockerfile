@@ -7,8 +7,8 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
         ca-certificates curl
 
-RUN bash <(curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh); \
-      bash <(curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh); \
+RUN curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh | bash; \
+      curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh | bash; \
       ls -lah /usr/local/bin/
 
 
