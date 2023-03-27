@@ -8,8 +8,7 @@ RUN set -eux; \
         ca-certificates curl
 
 RUN curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh | bash; \
-      curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh | bash; \
-      ls -lah /usr/local/bin/
+      curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh | bash;
 
 
 FROM ${BASE_IMAGE}
@@ -26,5 +25,7 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
+
+RUN ls -lah /usr/local/bin/
 
 CMD [ "/bin/bash" ]
