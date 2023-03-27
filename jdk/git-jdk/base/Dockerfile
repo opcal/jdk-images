@@ -26,6 +26,4 @@ RUN set -eux; \
 
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
 
-RUN ls -lah /usr/local/bin/
-
 CMD [ "/bin/bash" ]
