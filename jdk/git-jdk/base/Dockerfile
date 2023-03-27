@@ -7,7 +7,9 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
         ca-certificates curl
 
-RUN curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh | bash
+RUN bash <(curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh); \
+      bash <(curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh); \
+      ls -lah /usr/local/bin/
 
 
 FROM ${BASE_IMAGE}
@@ -23,6 +25,6 @@ RUN set -eux; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /usr/local/bin/props /usr/local/bin/props
+COPY --from=builder /usr/local/bin/ /usr/local/bin/
 
 CMD [ "/bin/bash" ]
