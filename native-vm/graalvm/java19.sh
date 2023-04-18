@@ -22,16 +22,16 @@ docker build \
     --build-arg GRAALVM_VERSION=${GRAALVM_VERSION} \
     -t graalvm:java19-${TAG_VERSION} \
     -f ${PROJECT_DIR}/native-vm/graalvm/base/Dockerfile . --no-cache
-docker image tag graalvm:java19-${TAG_VERSION} ${CI_REGISTRY}/opcal/graalvm:java19-${FIRST_VERSION}-${TIMESTAMP}
+docker image tag graalvm:java19-${TAG_VERSION} ${CI_REGISTRY}/opcal/graalvm:java19-${GRAALVM_VERSION}-${TIMESTAMP}
 docker image tag graalvm:java19-${TAG_VERSION} ${CI_REGISTRY}/opcal/graalvm:java19-${FIRST_VERSION}
 docker image tag graalvm:java19-${TAG_VERSION} ${CI_REGISTRY}/opcal/graalvm:java19-${GRAALVM_VERSION}
-docker push ${CI_REGISTRY}/opcal/graalvm:java19-${FIRST_VERSION}-${TIMESTAMP}
+docker push ${CI_REGISTRY}/opcal/graalvm:java19-${GRAALVM_VERSION}-${TIMESTAMP}
 docker push ${CI_REGISTRY}/opcal/graalvm:java19-${FIRST_VERSION}
 docker push ${CI_REGISTRY}/opcal/graalvm:java19-${GRAALVM_VERSION}
 
 docker rmi -f ${CI_REGISTRY}/opcal/graalvm:java19-${GRAALVM_VERSION}
 docker rmi -f ${CI_REGISTRY}/opcal/graalvm:java19-${FIRST_VERSION}
-docker rmi -f ${CI_REGISTRY}/opcal/graalvm:java19-${FIRST_VERSION}-${TIMESTAMP}
+docker rmi -f ${CI_REGISTRY}/opcal/graalvm:java19-${GRAALVM_VERSION}-${TIMESTAMP}
 docker rmi -f graalvm:java19-${TAG_VERSION}
 
 echo "build graalvm-java19-${FIRST_VERSION} finished"
