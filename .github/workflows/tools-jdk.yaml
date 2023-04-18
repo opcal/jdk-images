@@ -14,7 +14,6 @@ on:
       - "jdk/docker-jdk/**"
       - ".github/workflows/tools-jdk.yaml"
 
-
 jobs:
   images-build:
     runs-on: ubuntu-latest
