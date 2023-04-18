@@ -1,6 +1,7 @@
 name: build-tools-jdk-images
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "30 20 * * 0"
   push:

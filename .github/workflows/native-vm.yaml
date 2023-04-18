@@ -1,6 +1,7 @@
 name: build-native-vm-images
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "5 20 * * 0"
   push:

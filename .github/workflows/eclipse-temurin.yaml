@@ -1,6 +1,7 @@
 name: build-eclipse-temurin-images
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 20 * * 0"
   push:
