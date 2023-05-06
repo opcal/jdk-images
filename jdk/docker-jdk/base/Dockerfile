@@ -1,4 +1,4 @@
-FROM ghcr.io/opcal/alpine:latest as builder
+FROM ghcr.io/opcal/alpine:latest AS builder
 
 ARG JDK_URL
 

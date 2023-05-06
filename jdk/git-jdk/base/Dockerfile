@@ -1,6 +1,6 @@
 ARG BASE_IMAGE
 
-FROM ${BASE_IMAGE} as builder
+FROM ${BASE_IMAGE} AS builder
 
 RUN set -eux; \
     apt-get update; \
