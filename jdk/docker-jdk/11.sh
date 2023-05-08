@@ -17,13 +17,11 @@ JDK_URL=https://github.com/adoptium/temurin11-binaries/releases/download/${URL_V
 docker build \
     --build-arg JDK_URL=${JDK_URL} \
     --build-arg LATEST=${LATEST} \
-    -t docker-jdk:11-${TAG_VERSION} \
+    -t ${CI_REGISTRY}/opcal/docker-jdk:11 \
     -f ${PROJECT_DIR}/jdk/docker-jdk/base/Dockerfile . --no-cache
-docker image tag docker-jdk:11-${TAG_VERSION} ${CI_REGISTRY}/opcal/docker-jdk:11
-docker push ${CI_REGISTRY}/opcal/docker-jdk:11
 
+docker push ${CI_REGISTRY}/opcal/docker-jdk:11
 docker rmi -f ${CI_REGISTRY}/opcal/docker-jdk:11
-docker rmi -f docker-jdk:11-${TAG_VERSION}
 
 echo 'build docker-jdk-11 finished'
 echo " "

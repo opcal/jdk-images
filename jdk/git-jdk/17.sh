@@ -11,18 +11,14 @@ IMAGE=ghcr.io/opcal/eclipse-temurin:17-jdk
 # jdk-17
 docker build \
     --build-arg BASE_IMAGE=${IMAGE} \
-    -t git-jdk:17-${TAG_VERSION} \
+    -t ${CI_REGISTRY}/opcal/git-jdk:17-${TIMESTAMP} \
+    -t ${CI_REGISTRY}/opcal/git-jdk:17 \
     -f ${PROJECT_DIR}/jdk/git-jdk/base/Dockerfile . --no-cache
-docker image tag git-jdk:17-${TAG_VERSION} ${CI_REGISTRY}/opcal/git-jdk:17-${TIMESTAMP}
-docker image tag git-jdk:17-${TAG_VERSION} ${CI_REGISTRY}/opcal/git-jdk:17
 
-docker push ${CI_REGISTRY}/opcal/git-jdk:17-${TIMESTAMP}
-docker push ${CI_REGISTRY}/opcal/git-jdk:17
+docker push --all-tags ${CI_REGISTRY}/opcal/git-jdk
 
-
-docker rmi -f ${CI_REGISTRY}/opcal/git-jdk:17
 docker rmi -f ${CI_REGISTRY}/opcal/git-jdk:17-${TIMESTAMP}
-docker rmi -f git-jdk:17-${TAG_VERSION}
+docker rmi -f ${CI_REGISTRY}/opcal/git-jdk:17
 
 echo 'build git-jdk-17 finished'
 echo " "
