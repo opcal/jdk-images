@@ -9,25 +9,14 @@ echo 'build eclipse-temurin-17-jdk-jammy start'
 IMAGE=eclipse-temurin:17-jdk-jammy
 
 # 17-jdk-jammy
-docker build \
+docker buildx build \
+    --platform ${PLATFORM} \
     --build-arg BASE_IMAGE=${IMAGE} \
-    -t eclipse-temurin:17-jdk-jammy-${TAG_VERSION} \
+    --push \
+    -t ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy-${TIMESTAMP} \
+    -t ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy \
+    -t ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk \
     -f ${PROJECT_DIR}/jdk/eclipse-temurin/base/ubuntu/Dockerfile . --no-cache
-docker image tag eclipse-temurin:17-jdk-jammy-${TAG_VERSION} ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy-${TIMESTAMP}
-docker image tag eclipse-temurin:17-jdk-jammy-${TAG_VERSION} ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy
-
-docker push ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy-${TIMESTAMP}
-docker push ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy
-
-## tag 17-jdk
-docker image tag eclipse-temurin:17-jdk-jammy-${TAG_VERSION} ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk
-docker push ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk
-docker rmi -f ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk
-## tag 17-jdk
-
-docker rmi -f ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy
-docker rmi -f ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy-${TIMESTAMP}
-docker rmi -f eclipse-temurin:17-jdk-jammy-${TAG_VERSION}
 
 echo 'build eclipse-temurin-17-jdk-jammy finished'
 echo " "
