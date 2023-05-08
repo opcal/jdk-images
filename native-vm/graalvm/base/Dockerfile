@@ -7,7 +7,7 @@ ARG JAVA_VERSION
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends tar gzip; \
-    ARCH="$(dpkg --print-architecture | awk -F- '{ print $NF })"; \
+    ARCH="$(dpkg --print-architecture | awk -F- '{ print $NF }')"; \
     case "${ARCH}" in \
         aarch64|arm64) \
             BIN_ARCH=aarch64 ; \
