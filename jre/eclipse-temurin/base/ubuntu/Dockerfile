@@ -1,6 +1,6 @@
 ARG BASE_IMAGE
 
-FROM ${BASE_IMAGE}
+FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE}
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
