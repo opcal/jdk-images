@@ -9,7 +9,7 @@ echo 'build eclipse-temurin-20-jre-jammy start'
 IMAGE=eclipse-temurin:20-jre-jammy
 
 # 20-jre-jammy
-docker build \
+docker buildx build \
     --platform ${PLATFORM} \
     --build-arg BASE_IMAGE=${IMAGE} \
     --push \
