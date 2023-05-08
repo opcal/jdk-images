@@ -20,7 +20,7 @@ RUN apt-get update; \
             exit 1; \
             ;; \
     esac; \
-    curl -L "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${JAVA_VERSION}-linux-${dpkBIN_ARCHgArch}-${GRAALVM_VERSION}.tar.gz" -o /tmp/graalvm.tar.gz ; \
+    curl -L "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${JAVA_VERSION}-linux-${BIN_ARCH}-${GRAALVM_VERSION}.tar.gz" -o /tmp/graalvm.tar.gz ; \
     tar -xvzf /tmp/graalvm.tar.gz -C /opt/ ; \
     /opt/graalvm-ce-${JAVA_VERSION}-${GRAALVM_VERSION}/bin/gu install native-image
 
