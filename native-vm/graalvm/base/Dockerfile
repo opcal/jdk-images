@@ -1,19 +1,30 @@
 ARG BASE_IMAGE
 
-FROM ${BASE_IMAGE} AS builder 
+FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE} AS builder 
 
 ARG GRAALVM_VERSION
 ARG JAVA_VERSION
-ARG TARGETPLATFORM
-ARG GRAALVM_PKG=https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${JAVA_VERSION}-${TARGETPLATFORM}-${GRAALVM_VERSION}.tar.gz
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends tar gzip; \
-    curl -L ${GRAALVM_PKG} -o /tmp/graalvm.tar.gz ; \
+    ARCH="$(dpkg --print-architecture | awk -F- '{ print $NF })"; \
+    case "${ARCH}" in \
+        aarch64|arm64) \
+            BIN_ARCH=aarch64 ; \
+            ;; \
+        amd64|x86_64) \
+            BIN_ARCH=amd64 ; \
+            ;; \
+        *) \
+            echo "Unsupported arch: ${ARCH}"; \
+            exit 1; \
+            ;; \
+    esac; \
+    curl -L "https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-${JAVA_VERSION}-linux-${dpkBIN_ARCHgArch}-${GRAALVM_VERSION}.tar.gz" -o /tmp/graalvm.tar.gz ; \
     tar -xvzf /tmp/graalvm.tar.gz -C /opt/ ; \
     /opt/graalvm-ce-${JAVA_VERSION}-${GRAALVM_VERSION}/bin/gu install native-image
 
-FROM ${BASE_IMAGE} 
+FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE} 
 
 ARG GRAALVM_VERSION
 ARG JAVA_VERSION
