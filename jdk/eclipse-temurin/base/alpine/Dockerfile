@@ -35,7 +35,8 @@ FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE}
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
-RUN apk --no-cache add ca-certificates \
+RUN apk --no-cache add bash \
+		ca-certificates \
         net-tools \
         curl; \
     update-ca-certificates; \
