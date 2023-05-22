@@ -17,7 +17,11 @@ ARG LATEST
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
-RUN apk add --no-cache tzdata musl-locales musl-locales-lang bash ; \
+RUN apk add --no-cache tzdata musl-locales musl-locales-lang \
+        bash \
+        ca-certificates \
+        net-tools \
+        curl; \
     rm -rf /var/cache/apk/* ; \
     mkdir -p /opt/java/openjdk
 
@@ -32,4 +36,5 @@ RUN echo Verifying install ... \
     && echo java --version && java --version \
     && echo Complete.
 
-CMD ["jshell"]
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["bash"]
