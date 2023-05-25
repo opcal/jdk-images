@@ -12,6 +12,7 @@ on:
       - "jdk/tools-jdk.sh"
       - "jdk/git-jdk/**"
       - "jdk/docker-jdk/**"
+      - "jdk/dind-jdk/**"
       - ".github/workflows/tools-jdk.yaml"
 
 jobs:

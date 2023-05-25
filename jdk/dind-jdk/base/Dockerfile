@@ -1,5 +1,3 @@
-ARG BASE_IMAGE
-
 FROM ghcr.io/opcal/alpine:latest AS builder
 
 ARG JDK_URL
@@ -13,7 +11,7 @@ RUN set -eux; \
 	      --strip-components 1 \
 	      --no-same-owner 
 
-FROM ${BASE_IMAGE}
+FROM docker:dind
 
 ARG LATEST
 
@@ -38,5 +36,5 @@ RUN echo Verifying install ... \
     && echo java --version && java --version \
     && echo Complete.
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["bash"]
+ENTRYPOINT ["dockerd-entrypoint.sh"]
+CMD []
