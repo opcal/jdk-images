@@ -1,3 +1,5 @@
+ARG BASE_IMAGE
+
 FROM ghcr.io/opcal/alpine:latest AS builder
 
 ARG JDK_URL
@@ -10,8 +12,6 @@ RUN set -eux; \
 	      --directory /opt/java/openjdk \
 	      --strip-components 1 \
 	      --no-same-owner 
-
-ARG BASE_IMAGE
 
 FROM ${BASE_IMAGE}
 
