@@ -11,7 +11,9 @@ RUN set -eux; \
 	      --strip-components 1 \
 	      --no-same-owner 
 
-FROM docker:latest
+ARG BASE_IMAGE
+
+FROM ${BASE_IMAGE}
 
 ARG LATEST
 
