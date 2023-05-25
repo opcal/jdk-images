@@ -6,7 +6,6 @@ echo " "
 echo " "
 echo 'build docker-jdk-17 start'
 
-DOCKER_IMAGE=docker:latest
 LATEST=$(curl https://api.github.com/repos/adoptium/temurin17-binaries/releases/latest | grep tag_name | cut -d '"' -f 4)
 URL_VERSION=$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${LATEST}" "" | cut -d '?' -f 2)
 FILE_VERSION=$(echo $(echo "${LATEST}" | cut -d '-' -f 2) | sed "s/+/_/" )
@@ -18,7 +17,6 @@ JDK_URL=https://github.com/adoptium/temurin17-binaries/releases/download/${URL_V
 docker build \
     --build-arg JDK_URL=${JDK_URL} \
     --build-arg LATEST=${LATEST} \
-    --build-arg BASE_IMAGE=${DOCKER_IMAGE} \
     -t ${CI_REGISTRY}/opcal/docker-jdk:17 \
     -f ${PROJECT_DIR}/jdk/docker-jdk/base/Dockerfile . --no-cache
     

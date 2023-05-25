@@ -1,3 +1,5 @@
+ARG BASE_IMAGE
+
 FROM ghcr.io/opcal/alpine:latest AS builder
 
 ARG JDK_URL
@@ -11,7 +13,7 @@ RUN set -eux; \
 	      --strip-components 1 \
 	      --no-same-owner 
 
-FROM docker:latest
+FROM ${BASE_IMAGE}
 
 ARG LATEST
 
