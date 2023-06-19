@@ -19,6 +19,7 @@ docker buildx build \
     --build-arg JDK_VERSION=${JDK_VERSION} \
     --push \
     -t ${CI_REGISTRY}/opcal/graalvm:${JAVA_VERSION}-${TIMESTAMP} \
+    -t ${CI_REGISTRY}/opcal/graalvm:${JAVA_VERSION} \
     -t ${CI_REGISTRY}/opcal/graalvm:${JDK_VERSION} \
     -f ${PROJECT_DIR}/native-vm/graalvm/base/Dockerfile . --no-cache
 
