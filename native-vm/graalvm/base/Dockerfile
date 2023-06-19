@@ -20,7 +20,7 @@ RUN apt-get update; \
             exit 1; \
             ;; \
     esac; \
-    curl -L "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${JAVA_VERSION}/graalvm-community-jdk-${JAVA_VERSION}-linux-${BIN_ARCH}_bin.tar.gz" -o /tmp/graalvm.tar.gz ; \
+    curl -L "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${JAVA_VERSION}/graalvm-community-jdk-${JAVA_VERSION}_linux-${BIN_ARCH}_bin.tar.gz" -o /tmp/graalvm.tar.gz ; \
     ls -lah /tmp ; \
     tar -xvzf /tmp/graalvm.tar.gz -C /opt/ ; \
     VM_NAME=$(ls /opt/ | grep graalvm-*) ; \
