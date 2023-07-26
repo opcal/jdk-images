@@ -7,7 +7,7 @@ echo " "
 echo 'build eclipse-temurin-17-jre-alpine start'
 
 BASE_IMAGE=eclipse-temurin:17-jre-alpine
-GOSU_VERSION=$(curl https://api.github.com/repos/tianon/gosu/releases/latest | grep tag_name | cut -d '"' -f 4)
+GOSU_VERSION=$(curl https://api.github.com/repos/tianon/gosu/releases/latest | jq | grep tag_name | cut -d '"' -f 4)
 
 echo "BASE_IMAGE=[${BASE_IMAGE}] GOSU_VERSION=[${GOSU_VERSION}]"
 echo " "
