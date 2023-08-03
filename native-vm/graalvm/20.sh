@@ -6,7 +6,7 @@ echo " "
 echo " "
 
 BASE_IMAGE=ghcr.io/opcal/ubuntu:jammy
-JAVA_VERSION=20.0.1
+JAVA_VERSION=20.0.2
 JDK_VERSION=$(echo ${JAVA_VERSION} | cut -d '.' -f 1)
 
 echo "build graalvm-${JAVA_VERSION} start"
