@@ -6,12 +6,12 @@ echo " "
 echo " "
 
 BASE_IMAGE=ghcr.io/opcal/ubuntu:jammy
-JAVA_VERSION=20.0.2
+JAVA_VERSION=21.0.0
 JDK_VERSION=$(echo ${JAVA_VERSION} | cut -d '.' -f 1)
 
 echo "build graalvm-${JAVA_VERSION} start"
 
-# graalvm-java20
+# graalvm-java21
 docker buildx build \
     --platform ${PLATFORM} \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
