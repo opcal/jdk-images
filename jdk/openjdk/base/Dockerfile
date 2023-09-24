@@ -10,7 +10,7 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
         ca-certificates \
         gosu \
-        netcat \
+        netcat-traditional \
         dnsutils \
         curl; \
     apt-get -y autoclean; \
