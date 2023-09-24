@@ -20,7 +20,6 @@ RUN apt-get update; \
             exit 1; \
             ;; \
     esac; \
-    echo ${BIN_ARCH} ; \
     curl -L "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${JAVA_VERSION}/graalvm-community-jdk-${JAVA_VERSION}_linux-${BIN_ARCH}_bin.tar.gz" -o /tmp/graalvm.tar.gz ; \
     tar -xvzf /tmp/graalvm.tar.gz -C /opt/ ; \
     VM_NAME=$(ls /opt/ | grep graalvm-*) ; \
@@ -47,6 +46,6 @@ RUN echo ${JAVA_HOME}; echo ${PATH}; ls -lah /opt ; ls -lah /opt/graalvm-communi
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/* ; \
-    gu --version && java --version
+    java --version
 
 CMD ["jshell"]
