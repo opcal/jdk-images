@@ -46,6 +46,6 @@ RUN echo ${JAVA_HOME}; echo ${PATH}; ls -lah /opt ; ls -lah /opt/graalvm-communi
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/* ; \
-    java --version
+    native-image --version && java --version
 
 CMD ["jshell"]
