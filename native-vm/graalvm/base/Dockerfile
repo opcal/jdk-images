@@ -44,6 +44,6 @@ RUN echo ${JAVA_HOME}; echo ${PATH}; ls -lah /opt ; ls -lah /opt/jdk-${JAVA_VERS
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/* ; \
-    native-image --version && java --version
+    java --version
 
 CMD ["jshell"]
