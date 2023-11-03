@@ -20,8 +20,10 @@ RUN apt-get update; \
             exit 1; \
             ;; \
     esac; \
-    curl -L "https://download.oracle.com/java/${JDK_VERSION}/archive/jdk-${JAVA_VERSION}_linux-${BIN_ARCH}_bin.tar.gz" -o /tmp/graalvm.tar.gz ; \
-    tar -xvzf /tmp/graalvm.tar.gz -C /opt/ 
+    curl -L "https://download.oracle.com/graalvm/${JDK_VERSION}/archive/graalvm-jdk-${JAVA_VERSION}_linux-${BIN_ARCH}_bin.tar.gz" -o /tmp/graalvm.tar.gz ; \
+    tar -xvzf /tmp/graalvm.tar.gz -C /opt/ ; \
+    VM_NAME=$(ls /opt/ | grep graalvm-*) ; \
+    mv /opt/${VM_NAME} /opt/graalvm-jdk-${JDK_VERSION}
 
 
 FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE} 
@@ -31,12 +33,12 @@ ARG JAVA_VERSION
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
-ENV JAVA_HOME=/opt/jdk-${JAVA_VERSION} \
-    PATH="/opt/jdk-${JAVA_VERSION}/bin:$PATH"
+ENV JAVA_HOME=/opt/graalvm-jdk-${JDK_VERSION} \
+    PATH="/opt/graalvm-jdk-${JDK_VERSION}/bin:$PATH"
 
-COPY --from=builder /opt/jdk-${JAVA_VERSION} /opt/jdk-${JAVA_VERSION}
+COPY --from=builder /opt/graalvm-jdk-${JDK_VERSION} /opt/graalvm-jdk-${JDK_VERSION}
 
-RUN echo ${JAVA_HOME}; echo ${PATH}; ls -lah /opt ; ls -lah /opt/jdk-${JAVA_VERSION} ; \
+RUN echo ${JAVA_HOME}; echo ${PATH}; ls -lah /opt ; ls -lah /opt/graalvm-jdk-${JDK_VERSION} ; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
         build-essential libz-dev zlib1g-dev ; \
@@ -44,6 +46,6 @@ RUN echo ${JAVA_HOME}; echo ${PATH}; ls -lah /opt ; ls -lah /opt/jdk-${JAVA_VERS
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/* ; \
-    java --version
+    native-image --version && java --version
 
 CMD ["jshell"]
