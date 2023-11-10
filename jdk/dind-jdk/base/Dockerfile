@@ -9,7 +9,7 @@ RUN set -eux; \
     echo "Downloaded successfully as ${FILENAME}" ; \
     mkdir -p /opt/java/openjdk; \
     tar --extract \
-	      --file /tmp/openjdk.tar.gz \
+	      --file ${FILENAME} \
 	      --directory /opt/java/openjdk \
 	      --strip-components 1 \
 	      --no-same-owner 
