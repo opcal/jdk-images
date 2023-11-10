@@ -12,7 +12,7 @@ echo 'build dind-jdk-21 start'
 
 FEATURE_VERSION=11
 
-API_URL=https://api.adoptium.net/v3/binary/latest/{FEATURE_VERSION}/ga/alpine-linux/x64/jdk/hotspot/normal/eclipse
+API_URL=https://api.adoptium.net/v3/binary/latest/${FEATURE_VERSION}/ga/alpine-linux/x64/jdk/hotspot/normal/eclipse
 
 
 # 21-dind-jdk

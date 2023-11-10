@@ -12,7 +12,7 @@ echo 'build dind-jdk-17 start'
 
 FEATURE_VERSION=17
 
-API_URL=https://api.adoptium.net/v3/binary/latest/{FEATURE_VERSION}/ga/alpine-linux/x64/jdk/hotspot/normal/eclipse
+API_URL=https://api.adoptium.net/v3/binary/latest/${FEATURE_VERSION}/ga/alpine-linux/x64/jdk/hotspot/normal/eclipse
 
 # 17-dind-jdk
 docker build \
