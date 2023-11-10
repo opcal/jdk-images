@@ -1,21 +1,24 @@
 #!/bin/sh
 
+## check and download with adoptium api
+## https://github.com/adoptium/api.adoptium.net/blob/main/docs/cookbook.adoc#example-two-linking-to-the-latest-jdk-or-jre
+## https://github.com/adoptium/api.adoptium.net/blob/main/docs/cookbook.adoc#example-three-scripting-a-download-using-the-adoptium-api
+
 set -e
 
 echo " "
 echo " "
 echo 'build dind-jdk-21 start'
 
-LATEST=$(curl https://api.github.com/repos/adoptium/temurin21-binaries/releases/latest | jq | grep tag_name | cut -d '"' -f 4)
-URL_VERSION=$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${LATEST}" "" | cut -d '?' -f 2)
-FILE_VERSION=$(echo $(echo "${LATEST}" | cut -d '-' -f 2) | sed "s/+/_/" )
-JDK_URL=https://github.com/adoptium/temurin21-binaries/releases/download/${URL_VERSION}/OpenJDK21U-jdk_x64_alpine-linux_hotspot_${FILE_VERSION}.tar.gz
+FEATURE_VERSION=11
+
+API_URL=https://api.adoptium.net/v3/binary/latest/{FEATURE_VERSION}/ga/alpine-linux/x64/jdk/hotspot/normal/eclipse
 
 
 # 21-dind-jdk
 docker build \
-    --build-arg JDK_URL=${JDK_URL} \
-    --build-arg LATEST=${LATEST} \
+    --build-arg API_URL=${API_URL} \
+    --build-arg FEATURE_VERSION=${FEATURE_VERSION} \
     -t ${CI_REGISTRY}/opcal/dind-jdk:21 \
     -f ${PROJECT_DIR}/jdk/docker-jdk/base/Dockerfile . --no-cache
 
