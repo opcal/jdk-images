@@ -5,7 +5,7 @@ ARG API_URL
 RUN set -eux; \
     FETCH_URL=$(curl -s -w %{redirect_url} "${API_URL}") ; \
     FILENAME=$(curl -OLs -w %{filename_effective} "${FETCH_URL}") ; \
-    curl -Ls "${FETCH_URL}.sha256.txt" | sha256sum -c --status ; \
+    curl -Ls "${FETCH_URL}.sha256.txt" | sha256sum -c - ; \
     echo "Downloaded successfully as ${FILENAME}" ; \
     mkdir -p /opt/java/openjdk; \
     tar --extract \
