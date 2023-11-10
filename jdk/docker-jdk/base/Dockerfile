@@ -1,9 +1,12 @@
 FROM ghcr.io/opcal/alpine:latest AS builder
 
-ARG JDK_URL
+ARG API_URL
 
 RUN set -eux; \
-    curl -L ${JDK_URL} -o /tmp/openjdk.tar.gz ; \
+    FETCH_URL=$(curl -s -w %{redirect_url} "${API_URL}") ; \
+    FILENAME=$(curl -OLs -w %{filename_effective} "${FETCH_URL}") ; \
+    curl -Ls "${FETCH_URL}.sha256.txt" | sha256sum -c --status ; \
+    echo "Downloaded successfully as ${FILENAME}" ; \
     mkdir -p /opt/java/openjdk; \
     tar --extract \
 	      --file /tmp/openjdk.tar.gz \
@@ -13,7 +16,7 @@ RUN set -eux; \
 
 FROM docker:latest
 
-ARG LATEST
+ARG FEATURE_VERSION
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
@@ -29,7 +32,7 @@ COPY --from=builder /opt/java/openjdk /opt/java/openjdk
 
 ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH" \
-    JAVA_VERSION="${LATEST}"
+    JAVA_VERSION="${FEATURE_VERSION}"
 
 RUN echo Verifying install ... \
     && echo javac --version && javac --version \

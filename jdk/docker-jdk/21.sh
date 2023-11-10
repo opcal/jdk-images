@@ -6,11 +6,9 @@ echo " "
 echo " "
 echo 'build docker-jdk-21 start'
 
-LATEST=$(curl -s https://api.github.com/repos/adoptium/temurin21-binaries/releases/latest | jq | grep tag_name | cut -d '"' -f 4)
-URL_VERSION=$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "${LATEST}" "example" | cut -d '?' -f 2)
-FILE_VERSION=$(echo $(echo "${LATEST}" | cut -d '-' -f 2) | sed "s/+/_/" )
-JDK_URL=https://github.com/adoptium/temurin21-binaries/releases/download/${URL_VERSION}/OpenJDK21U-jdk_x64_alpine-linux_hotspot_${FILE_VERSION}.tar.gz
+FEATURE_VERSION=21
 
+API_URL=https://api.adoptium.net/v3/binary/latest/${FEATURE_VERSION}/ga/alpine-linux/x64/jdk/hotspot/normal/eclipse
 
 # 21-docker-jdk
 docker build \
