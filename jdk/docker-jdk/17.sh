@@ -12,8 +12,8 @@ API_URL=https://api.adoptium.net/v3/binary/latest/${FEATURE_VERSION}/ga/alpine-l
 
 # 17-docker-jdk
 docker build \
-    --build-arg JDK_URL=${JDK_URL} \
-    --build-arg LATEST=${LATEST} \
+    --build-arg API_URL=${API_URL} \
+    --build-arg FEATURE_VERSION=${FEATURE_VERSION} \
     -t ${CI_REGISTRY}/opcal/docker-jdk:17 \
     -f ${PROJECT_DIR}/jdk/docker-jdk/base/Dockerfile . --no-cache
     
