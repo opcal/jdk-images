@@ -19,7 +19,7 @@ RUN set -eux; \
     DEBIAN_FRONTEND=noninteractive \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-        ca-certificates curl less ssh zlib1g git bc xmlstarlet ; \
+        ca-certificates curl less ssh zlib1g git bc xmlstarlet netcat ; \
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/*
