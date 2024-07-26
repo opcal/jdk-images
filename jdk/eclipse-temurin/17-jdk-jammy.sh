@@ -15,7 +15,6 @@ docker buildx build \
     --push \
     -t ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy-${TIMESTAMP} \
     -t ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk-jammy \
-    -t ${CI_REGISTRY}/opcal/eclipse-temurin:17-jdk \
     -f ${PROJECT_DIR}/jdk/eclipse-temurin/base/ubuntu/Dockerfile . --no-cache
 
 echo 'build eclipse-temurin-17-jdk-jammy finished'
