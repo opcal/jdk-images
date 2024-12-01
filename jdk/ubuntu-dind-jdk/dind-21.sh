@@ -13,7 +13,8 @@ echo 'build ubuntu-dind-jdk-21 start'
 FEATURE_VERSION=21
 
 # 21-ubuntu-dind-jdk
-docker build \
+docker buildx build \
+    --platform ${PLATFORM} \
     --build-arg FEATURE_VERSION=${FEATURE_VERSION} \
     -t ${CI_REGISTRY}/opcal/ubuntu-dind-jdk:21 \
     -f ${PROJECT_DIR}/jdk/ubuntu-dind-jdk/base/Dockerfile . --no-cache
