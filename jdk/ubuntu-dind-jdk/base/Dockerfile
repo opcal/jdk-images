@@ -38,6 +38,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
     apt-get clean ; \
     apt-get -y autoclean ; \
     apt-get -y autoremove ; \
+    ls -la /opt/java/openjdk \
     rm -rf /var/lib/apt/lists/* ;
 
 FROM --platform=${TARGETPLATFORM} cruizba/ubuntu-dind:noble-latest
