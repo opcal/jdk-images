@@ -9,10 +9,10 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
         ca-certificates \
-        gosu \
-        netcat-openbsd \
+        curl \
         dnsutils \
-        curl; \
+        gosu \
+        netcat-openbsd ;\
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/*
