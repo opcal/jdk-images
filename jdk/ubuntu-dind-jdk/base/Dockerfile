@@ -62,7 +62,7 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/* ; \
     mkdir -p /opt/java/openjdk
 
-COPY --from=builder /opt/java/ /opt/java/
+COPY --from=builder /opt/java /opt/java
 
 ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH" \
