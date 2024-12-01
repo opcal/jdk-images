@@ -4,7 +4,8 @@ LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 ARG FEATURE_VERSION
 
-RUN set -eux; \
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
+    set -eux; \
     DEBIAN_FRONTEND=noninteractive ; \
     apt-get update; \
     apt-get install -y --no-install-recommends gzip jq tar; \
