@@ -16,7 +16,7 @@ FEATURE_VERSION=21
 docker build \
     --build-arg FEATURE_VERSION=${FEATURE_VERSION} \
     -t ${CI_REGISTRY}/opcal/ubuntu-dind-jdk:21 \
-    -f ${PROJECT_DIR}/jdk/docker-jdk/base/Dockerfile . --no-cache
+    -f ${PROJECT_DIR}/jdk/ubuntu-dind-jdk/base/Dockerfile . --no-cache
 
 docker push ${CI_REGISTRY}/opcal/ubuntu-dind-jdk:21
 docker rmi -f ${CI_REGISTRY}/opcal/ubuntu-dind-jdk:21
