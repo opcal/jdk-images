@@ -68,6 +68,8 @@ ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH" \
     JAVA_VERSION="$(cat /opt/java/JAVA_VERSION)"
 
+RUN  ls -la /opt/java ; ls -la  /opt/java/openjdk
+
 RUN echo Verifying install ... \
     && echo javac --version && javac --version \
     && echo java --version && java --version \
