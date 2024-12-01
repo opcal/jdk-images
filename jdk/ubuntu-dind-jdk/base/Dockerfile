@@ -50,15 +50,22 @@ RUN set -eux; \
     DEBIAN_FRONTEND=noninteractive ; \
     apt-get update ; \
     apt-get install -y --no-install-recommends \
+        binutils \
         ca-certificates \
         curl \
         dnsutils \
+        fontconfig \
         gosu \
+        locales \
         netcat-openbsd \
+        p11-kit \
+        tzdata \
     ; \
     apt-get clean ; \
     apt-get -y autoclean ; \
     apt-get -y autoremove ; \
+    echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen; \
+    locale-gen en_US.UTF-8; \
     rm -rf /var/lib/apt/lists/* ; \
     mkdir -p /opt/java/openjdk
 
