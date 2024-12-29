@@ -19,7 +19,16 @@ RUN set -eux; \
     DEBIAN_FRONTEND=noninteractive \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-        ca-certificates curl less openssh-client zlib1g git bc xmlstarlet netcat-openbsd ; \
+        bc \
+        ca-certificates \
+        curl \
+        git \
+        less \
+        netcat-openbsd \
+        openssh-client \
+        xmlstarlet \
+        zlib1g \
+        ; \
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/*
