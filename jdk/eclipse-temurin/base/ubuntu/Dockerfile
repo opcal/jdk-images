@@ -11,6 +11,8 @@ RUN set -eux; \
         ca-certificates \
         curl \
         dnsutils \
+        git \
+        gnupg2 \
         gosu \
         netcat-openbsd ;\
     apt-get -y autoclean; \

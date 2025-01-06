@@ -20,11 +20,17 @@ ARG LATEST
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
-RUN apk add --no-cache tzdata musl-locales musl-locales-lang \
+RUN apk add --no-cache \
         bash \
         ca-certificates \
+        curl \
+        git \
+		gnupg \
+        musl-locales \
+        musl-locales-lang \
         net-tools \
-        curl; \
+        tzdata \
+        ; \
     rm -rf /var/cache/apk/* ; \
     mkdir -p /opt/java/openjdk
 

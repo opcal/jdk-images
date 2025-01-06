@@ -24,6 +24,8 @@ RUN apk add --no-cache \
         bash \
         ca-certificates \
         curl \
+        git \
+		gnupg \
         musl-locales \
         musl-locales-lang \
         net-tools \

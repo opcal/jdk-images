@@ -37,8 +37,11 @@ LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 RUN apk --no-cache add bash \
 		ca-certificates \
+		curl \
+		git \
+		gnupg \
         net-tools \
-        curl; \
+        ; \
     update-ca-certificates; \
     rm -rf /var/cache/apk/*  
 

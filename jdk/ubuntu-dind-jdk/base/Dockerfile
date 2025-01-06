@@ -56,6 +56,7 @@ RUN set -eux; \
         dnsutils \
         fontconfig \
         git \
+        gnupg2 \
         gosu \
         locales \
         netcat-openbsd \

@@ -23,6 +23,7 @@ RUN set -eux; \
         ca-certificates \
         curl \
         git \
+        gnupg2 \
         less \
         netcat-openbsd \
         openssh-client \
