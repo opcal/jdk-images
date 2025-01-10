@@ -9,8 +9,9 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
         ca-certificates \
+        curl \
         gosu \
-        curl; \
+        ; \
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/*
