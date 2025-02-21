@@ -39,5 +39,8 @@ jobs:
           PLATFORM: linux/amd64,linux/arm64
         run: |
           sudo apt update && sudo apt install curl jq &&
+          docker pull tonistiigi/binfmt:latest
+          docker run --privileged --rm tonistiigi/binfmt --uninstall qemu-*
+          docker run --privileged --rm tonistiigi/binfmt --install all
           chmod +x jdk/eclipse-temurin.sh &&
           jdk/eclipse-temurin.sh
