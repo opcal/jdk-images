@@ -2,7 +2,7 @@
 
 ARG BASE_IMAGE 
 
-FROM --platform=${TARGETPLATFORM} alpine:latest AS gosu_dist
+FROM alpine:latest AS gosu_dist
 
 ARG GOSU_VERSION
 
