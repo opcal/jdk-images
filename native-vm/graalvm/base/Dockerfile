@@ -1,6 +1,8 @@
+# check=skip=InvalidDefaultArgInFrom
+
 ARG BASE_IMAGE
 
-FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE} AS builder 
+FROM ${BASE_IMAGE} AS builder 
 
 ARG JDK_VERSION
 ARG JAVA_VERSION
@@ -26,7 +28,7 @@ RUN apt-get update; \
     mv /opt/${VM_NAME} /opt/graalvm-jdk-${JDK_VERSION}
 
 
-FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE} 
+FROM ${BASE_IMAGE} 
 
 ARG JDK_VERSION
 ARG JAVA_VERSION

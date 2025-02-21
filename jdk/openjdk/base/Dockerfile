@@ -1,3 +1,4 @@
+# check=skip=InvalidDefaultArgInFrom
 
 ARG BASE_IMAGE
 FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE}
@@ -9,10 +10,11 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
         ca-certificates \
+        curl \
+        dnsutils \
         gosu \
         netcat-openbsd \
-        dnsutils \
-        curl; \
+        ; \
     apt-get -y autoclean; \
     apt-get -y autoremove; \
     rm -rf /var/lib/apt/lists/*

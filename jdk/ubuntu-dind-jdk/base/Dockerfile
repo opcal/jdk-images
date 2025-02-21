@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} ghcr.io/opcal/ubuntu:noble AS builder
+FROM ghcr.io/opcal/ubuntu:noble AS builder
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
@@ -40,7 +40,7 @@ RUN set -eux; \
     apt-get -y autoremove ; \
     rm -rf /var/lib/apt/lists/* ;
 
-FROM --platform=${TARGETPLATFORM} cruizba/ubuntu-dind:noble-latest
+FROM cruizba/ubuntu-dind:noble-latest
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
