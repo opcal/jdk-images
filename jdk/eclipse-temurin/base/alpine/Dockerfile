@@ -1,3 +1,5 @@
+# check=skip=InvalidDefaultArgInFrom
+
 ARG BASE_IMAGE 
 
 FROM --platform=${TARGETPLATFORM} alpine:latest AS gosu_dist
