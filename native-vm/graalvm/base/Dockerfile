@@ -5,7 +5,6 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE} AS builder 
 
 ARG JDK_VERSION
-ARG JAVA_VERSION
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends tar gzip; \
@@ -22,7 +21,7 @@ RUN apt-get update; \
             exit 1; \
             ;; \
     esac; \
-    curl -L "https://download.oracle.com/graalvm/${JDK_VERSION}/archive/graalvm-jdk-${JAVA_VERSION}_linux-${BIN_ARCH}_bin.tar.gz" -o /tmp/graalvm.tar.gz ; \
+    curl -L "https://download.oracle.com/graalvm/${JDK_VERSION}/latest/graalvm-jdk-${JDK_VERSION}_linux-${BIN_ARCH}_bin.tar.gz" -o /tmp/graalvm.tar.gz ;\
     tar -xvzf /tmp/graalvm.tar.gz -C /opt/ ; \
     VM_NAME=$(ls /opt/ | grep graalvm-*) ; \
     mv /opt/${VM_NAME} /opt/graalvm-jdk-${JDK_VERSION}
@@ -31,7 +30,6 @@ RUN apt-get update; \
 FROM ${BASE_IMAGE} 
 
 ARG JDK_VERSION
-ARG JAVA_VERSION
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
