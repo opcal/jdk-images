@@ -11,10 +11,10 @@ echo 'build opcal-jdk start'
 ${PROJECT_DIR}/jdk/git-jdk/git-jdk.sh
 
 # docker-jdk
-# find ${PROJECT_DIR}/jdk/docker-jdk/ -type f -iname '*.sh' | sort -n | xargs -I {} sh {};
+find ${PROJECT_DIR}/jdk/docker-jdk/ -type f -iname '*.sh' | sort -n | xargs -I {} sh {};
 
 # dind-jdk
-# find ${PROJECT_DIR}/jdk/dind-jdk/ -type f -iname '*.sh' | sort -n | xargs -I {} sh {};
+find ${PROJECT_DIR}/jdk/dind-jdk/ -type f -iname '*.sh' | sort -n | xargs -I {} sh {};
 
 echo 'build opcal-jdk finished'
 echo " "
