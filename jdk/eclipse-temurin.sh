@@ -7,8 +7,7 @@ echo " "
 echo 'build opcal-jdk start'
 
 # eclipse-temurin
-# find ${PROJECT_DIR}/jdk/eclipse-temurin/ -type f -iname '*.sh' | sort -n | xargs -I {} sh {};
-${PROJECT_DIR}/jdk/eclipse-temurin/jdk-alpine.sh
+find ${PROJECT_DIR}/jdk/eclipse-temurin/ -type f -iname '*.sh' | sort -n | xargs -I {} sh {};
 
 echo 'build opcal-jdk finished'
 echo " "
