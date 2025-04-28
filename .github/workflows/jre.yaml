@@ -38,5 +38,4 @@ jobs:
           PLATFORM: linux/amd64,linux/arm64/v8
         run: |
           sudo apt update && sudo apt install curl jq &&
-          chmod +x jre/jre.sh &&
           jre/jre.sh
