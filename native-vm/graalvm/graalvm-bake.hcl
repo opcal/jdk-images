@@ -32,7 +32,7 @@ target "graalvm" {
     dockerfile = "base/Dockerfile"
     args = {
         BASE_IMAGE = item.base,
-        GOSU_VERSION = "${GOSU_VERSION}"
+        JDK_VERSION = item.version
     }
     platforms = ["linux/amd64", "linux/arm64"]
     tags = [
