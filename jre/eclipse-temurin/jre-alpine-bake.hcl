@@ -38,13 +38,12 @@ target "jre-alpine" {
     }
     context = "${PROJECT_DIR}/jre/eclipse-temurin"
     dockerfile = "base/alpine/Dockerfile"
-    target = item.version
     args = {
         BASE_IMAGE = item.base,
         GOSU_VERSION = "${GOSU_VERSION}"
     }
     platforms = ["linux/amd64", "linux/arm64/v8"]
     tags = [
-        "${CI_REGISTRY}/opcal/eclipse-temurin:item.version"
+        "${CI_REGISTRY}/opcal/eclipse-temurin:${item.version}"
     ]
 }
