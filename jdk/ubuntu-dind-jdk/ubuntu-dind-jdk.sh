@@ -8,18 +8,17 @@ set -e
 
 echo " "
 echo " "
-echo 'build ubuntu-dind-jdk-17 start'
+echo 'build ubuntu-dind-jdk start'
 
-FEATURE_VERSION=17
+echo " "
+echo " "
 
-# 17-ubuntu-dind-jdk
-docker buildx build \
-    --platform ${PLATFORM} \
-    --build-arg FEATURE_VERSION=${FEATURE_VERSION} \
+docker buildx bake \
+    -f ${PROJECT_DIR}/jdk/ubuntu-dind-jdk/ubuntu-dind-jdk-bake.hcl \
+    --pull \
     --push \
-    -t ${CI_REGISTRY}/opcal/ubuntu-dind-jdk:17 \
-    -f ${PROJECT_DIR}/jdk/ubuntu-dind-jdk/base/Dockerfile . --no-cache
+    --no-cache
 
-echo 'build ubuntu-dind-jdk-17 finished'
+echo 'build ubuntu-dind-jdk finished'
 echo " "
 echo " "

@@ -9,7 +9,6 @@ on:
       - main
     paths:
       - "jdk/ubuntu-dind-jdk/**"
-      - "jdk/ubuntu-dind-jdk.sh"
       - ".github/workflows/ubuntu-dind-jdk.yaml"
 
 jobs:
@@ -39,5 +38,4 @@ jobs:
           PLATFORM: linux/amd64,linux/arm64
         run: |
           sudo apt update && sudo apt install curl jq &&
-          chmod +x jdk/ubuntu-dind-jdk.sh &&
-          jdk/ubuntu-dind-jdk.sh
+          ./jdk/ubuntu-dind-jdk/ubuntu-dind-jdk.sh
