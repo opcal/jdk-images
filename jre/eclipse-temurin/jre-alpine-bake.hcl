@@ -19,7 +19,7 @@ variable "GOSU_VERSION" {
 }
 
 target "jre-alpine" {
-    name = "jre-alpine-${item.version}"
+    name = "${item.version}"
     matrix = {
         item = [
             {
@@ -42,7 +42,7 @@ target "jre-alpine" {
         BASE_IMAGE = "${item.base}",
         GOSU_VERSION = "${GOSU_VERSION}"
     }
-    platforms = ["linux/amd64", "linux/arm64/v8"]
+    platforms = ["linux/amd64"]
     tags = [
         "${CI_REGISTRY}/opcal/eclipse-temurin:${item.version}"
     ]
