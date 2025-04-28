@@ -39,7 +39,7 @@ target "jre-alpine" {
     context = "${PROJECT_DIR}/jre/eclipse-temurin"
     dockerfile = "base/alpine/Dockerfile"
     args = {
-        BASE_IMAGE = item.base,
+        BASE_IMAGE = "${item.base}",
         GOSU_VERSION = "${GOSU_VERSION}"
     }
     platforms = ["linux/amd64", "linux/arm64/v8"]
