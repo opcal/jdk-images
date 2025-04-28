@@ -36,8 +36,8 @@ target "git-jdk" {
             },
         ]
     }
-    context = "${PROJECT_DIR}/jre/eclipse-temurin"
-    dockerfile = "base/ubuntu/Dockerfile"
+    context = "${PROJECT_DIR}/jdk/git-jdk"
+    dockerfile = "base/Dockerfile"
     args = {
         BASE_IMAGE = item.base
     }
