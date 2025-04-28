@@ -21,8 +21,6 @@ RUN set -eux; \
 
 FROM docker:latest
 
-ARG LATEST
-
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 RUN apk add --no-cache \
