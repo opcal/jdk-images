@@ -18,7 +18,7 @@ target "ubuntu-dind-jdk" {
     context = "${PROJECT_DIR}/jdk/ubuntu-dind-jdk"
     dockerfile = "base/Dockerfile"
     args = {
-        FEATURE_VERSION = jdk_version
+        JDK_VERSION = jdk_version
     }
     platforms = ["linux/amd64", "linux/arm64"]
 

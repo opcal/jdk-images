@@ -2,7 +2,7 @@ FROM ghcr.io/opcal/ubuntu:noble AS builder
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
-ARG FEATURE_VERSION
+ARG JDK_VERSION
 
 RUN set -eux; \
     DEBIAN_FRONTEND=noninteractive ; \
@@ -21,14 +21,16 @@ RUN set -eux; \
             exit 1; \
             ;; \
     esac; \
-    LATEST=$(curl "https://api.adoptium.net/v3/info/release_versions?architecture=${BIN_ARCH}&heap_size=normal&image_type=jdk&jvm_impl=hotspot&lts=true&os=linux&page=0&page_size=1&project=jdk&release_type=ga&semver=false&sort_method=DEFAULT&sort_order=DESC&vendor=eclipse&version=%5B${FEATURE_VERSION}%2C$((${FEATURE_VERSION} + 1))%29" | jq '.versions[0].openjdk_version' | cut -d '"' -f 2) ; \
-    API_URL=https://api.adoptium.net/v3/binary/latest/${FEATURE_VERSION}/ga/linux/${BIN_ARCH}/jdk/hotspot/normal/eclipse ; \
-    FETCH_URL=$(curl -s -w %{redirect_url} "${API_URL}") ; \
-    FILENAME=$(curl -OLs -w %{filename_effective} "${FETCH_URL}") ; \
-    curl -Ls "${FETCH_URL}.sha256.txt" | sha256sum -c - ; \
-    echo "Downloaded successfully as ${FILENAME}" ; \
+    API_URL="https://api.adoptium.net/v3/assets/latest/${JDK_VERSION}/hotspot?architecture=${BIN_ARCH}&image_type=jdk&os=linux&vendor=eclipse" ; \ 
+    RESULT=$(curl -s "${API_URL}") ; \
+    JAVA_VERSION=$(echo "${RESULT}" | jq '.[0].version.openjdk_version' | cut -d '"' -f 2) ; \
+    CHECKSUM=$(echo "${RESULT}" | jq '.[0].binary.package.checksum' | cut -d '"' -f 2) ;\
+    DOWNLOAD_LINK=$(echo "${RESULT}" | jq '.[0].binary.package.link' | cut -d '"' -f 2) ; \
+    curl -Ls ${DOWNLOAD_LINK} -o /tmp/openjdk.tar.gz ; \
+    echo "${CHECKSUM} */tmp/openjdk.tar.gz" | sha256sum -c - ; \
+    echo "Downloaded successfully" ; \
     mkdir -p /opt/java/openjdk; \
-    echo ${LATEST} > /opt/java/JAVA_VERSION ; \
+    echo ${JAVA_VERSION} > /opt/java/JAVA_VERSION ; \
     tar --extract \
 	      --file ${FILENAME} \
 	      --directory /opt/java/openjdk \
@@ -74,8 +76,7 @@ RUN set -eux; \
 COPY --from=builder /opt/java /opt/java
 
 ENV JAVA_HOME=/opt/java/openjdk \
-    PATH="/opt/java/openjdk/bin:$PATH" \
-    JAVA_VERSION="$(cat /opt/java/JAVA_VERSION)"
+    PATH="/opt/java/openjdk/bin:$PATH"
 
 RUN echo Verifying install ... \
     && echo javac --version && javac --version \
