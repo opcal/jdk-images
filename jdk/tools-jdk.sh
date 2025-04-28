@@ -15,7 +15,8 @@ ${PROJECT_DIR}/jdk/git-jdk/git-jdk.sh
 ${PROJECT_DIR}/jdk/docker-jdk/docker-jdk.sh
 
 # dind-jdk
-find ${PROJECT_DIR}/jdk/dind-jdk/ -type f -iname '*.sh' | sort -n | xargs -I {} sh {};
+# find ${PROJECT_DIR}/jdk/dind-jdk/ -type f -iname '*.sh' | sort -n | xargs -I {} sh {};
+${PROJECT_DIR}/jdk/dind-jdk/dind-jdk.sh
 
 echo 'build opcal-jdk finished'
 echo " "
