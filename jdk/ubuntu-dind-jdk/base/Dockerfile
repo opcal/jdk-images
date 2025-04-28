@@ -32,7 +32,7 @@ RUN set -eux; \
     mkdir -p /opt/java/openjdk; \
     echo ${JAVA_VERSION} > /opt/java/JAVA_VERSION ; \
     tar --extract \
-	      --file ${FILENAME} \
+	      --file /tmp/openjdk.tar.gz \
 	      --directory /opt/java/openjdk \
 	      --strip-components 1 \
 	      --no-same-owner \
