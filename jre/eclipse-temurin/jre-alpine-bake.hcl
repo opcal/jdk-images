@@ -42,6 +42,7 @@ target "jre-alpine" {
         BASE_IMAGE = item.base,
         GOSU_VERSION = "${GOSU_VERSION}"
     }
+    # there are no arm64 alpine version jre
     platforms = ["linux/amd64"]
     tags = [
         "${CI_REGISTRY}/opcal/eclipse-temurin:${item.version}"
