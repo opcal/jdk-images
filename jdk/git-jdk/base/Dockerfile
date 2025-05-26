@@ -7,20 +7,10 @@ FROM ${BASE_IMAGE} AS builder
 SHELL ["/bin/bash", "-c"]
 
 RUN set -eux; \
-    min_seconds=2 ; \
-    max_seconds=10 ; \
-    random_seconds=$((RANDOM % (max_seconds - min_seconds + 1) + min_seconds)) ; \
-    sleep "$random_seconds"; \
     apt-get update; \
-    random_seconds=$((RANDOM % (max_seconds - min_seconds + 1) + min_seconds)) ; \
-    sleep "$random_seconds"; \
     apt-get install -y --no-install-recommends \
         ca-certificates curl ; \
-    random_seconds=$((RANDOM % (max_seconds - min_seconds + 1) + min_seconds)) ; \
-    sleep "$random_seconds"; \
     bash <(curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh); \
-    random_seconds=$((RANDOM % (max_seconds - min_seconds + 1) + min_seconds)) ; \
-    sleep "$random_seconds"; \
     bash <(curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh);
 
 
