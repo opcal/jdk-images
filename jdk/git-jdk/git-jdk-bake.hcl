@@ -1,5 +1,5 @@
 group "default" {
-    targets = ["git-jdk-11", "git-jdk-17", "git-jdk-21"]
+    targets = ["git-jdk"]
 }
 
 variable "PROJECT_DIR" {
