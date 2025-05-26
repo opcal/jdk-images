@@ -23,10 +23,6 @@ target "git-jdk" {
     matrix = {
         item = [
             {
-                base = "ghcr.io/opcal/eclipse-temurin:11-jdk"
-                version = "11"
-            },
-            {
                 base = "ghcr.io/opcal/eclipse-temurin:17-jdk"
                 version = "17"
             },
