@@ -9,8 +9,9 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
         ca-certificates curl
 
-RUN curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh | bash; \
-      curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh | bash;
+
+RUN bash <(curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh) ; \
+      bash <(curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh) ;
 
 
 FROM ${BASE_IMAGE}
