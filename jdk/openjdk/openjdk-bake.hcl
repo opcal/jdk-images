@@ -17,10 +17,10 @@ variable "TIMESTAMP" {
 target "openjdk" {
     name = "openjdk-${jdk_version}"
     matrix = {
-        jdk_version = ["11-jdk-slim", "17-jdk-slim", "21-jdk-slim"]
+        jdk_version = ["11-slim", "17-slim", "21-slim", "25-slim"]
     }
-    context = "${PROJECT_DIR}/jdk/eclipse-temurin"
-    dockerfile = "base/ubuntu/Dockerfile"
+    context = "${PROJECT_DIR}/jdk/openjdk"
+    dockerfile = "base/Dockerfile"
     args = {
         BASE_IMAGE = "openjdk:${jdk_version}"
     }
