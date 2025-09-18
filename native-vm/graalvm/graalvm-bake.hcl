@@ -25,6 +25,10 @@ target "graalvm" {
             {
                 base = "ghcr.io/opcal/ubuntu:noble"
                 version = "21"
+            },
+            {
+                base = "ghcr.io/opcal/ubuntu:noble"
+                version = "25"
             }
         ]
     }
