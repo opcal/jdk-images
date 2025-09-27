@@ -45,6 +45,14 @@ target "jdk-ubuntu" {
             {
                 version = "21-jdk"
                 os = "noble"
+            },
+            {
+                version = "25-jdk"
+                os = "jammy"
+            },
+            {
+                version = "25-jdk"
+                os = "noble"
             }
         ]
     }

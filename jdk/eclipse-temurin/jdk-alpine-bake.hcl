@@ -33,6 +33,10 @@ target "jdk-alpine" {
             {
                 base = "eclipse-temurin:21-jdk-alpine"
                 version = "21-jdk-alpine"
+            },
+            {
+                base = "eclipse-temurin:25-jdk-alpine"
+                version = "25-jdk-alpine"
             }
         ]
     }
