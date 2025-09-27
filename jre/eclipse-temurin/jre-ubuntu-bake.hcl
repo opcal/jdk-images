@@ -45,6 +45,14 @@ target "jre-ubuntu" {
             {
                 version = "21-jre"
                 os = "noble"
+            },
+            {
+                version = "25-jre"
+                os = "jammy"
+            },
+            {
+                version = "25-jre"
+                os = "noble"
             }
         ]
     }

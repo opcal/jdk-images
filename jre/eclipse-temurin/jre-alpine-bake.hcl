@@ -33,6 +33,10 @@ target "jre-alpine" {
             {
                 base = "eclipse-temurin:21-jre-alpine"
                 version = "21-jre-alpine"
+            },
+            {
+                base = "eclipse-temurin:25-jre-alpine"
+                version = "25-jre-alpine"
             }
         ]
     }
