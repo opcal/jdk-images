@@ -13,7 +13,7 @@ variable "CI_REGISTRY" {
 target "ubuntu-dind-jdk" {
     name = "ubuntu-dind-jdk-${jdk_version}"
     matrix = {
-        jdk_version = ["11", "17", "21"]
+        jdk_version = ["11", "17", "21", "25"]
     }
     context = "${PROJECT_DIR}/jdk/ubuntu-dind-jdk"
     dockerfile = "base/Dockerfile"
