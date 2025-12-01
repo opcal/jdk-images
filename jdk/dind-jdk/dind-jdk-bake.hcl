@@ -18,7 +18,7 @@ variable "TIMESTAMP" {
 target "dind-jdk" {
     name = "dind-jdk-${jdk_version}"
     matrix = {
-        jdk_version = ["11", "17", "21"]
+        jdk_version = ["11", "17", "21", "25"]
     }
     context = "${PROJECT_DIR}/jdk/dind-jdk"
     dockerfile = "base/Dockerfile"
