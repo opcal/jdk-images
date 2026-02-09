@@ -13,6 +13,8 @@ RUN set -eux; \
     bash <(curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh); \
     bash <(curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh);
 
+RUN /usr/local/bin/props --version; \
+    /usr/local/bin/versions --version
 
 FROM ${BASE_IMAGE}
 
