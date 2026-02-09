@@ -9,7 +9,7 @@ SHELL ["/bin/bash", "-c"]
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-        ca-certificates curl ; \
+        ca-certificates curl gnupg2; \
     bash <(curl -sL https://raw.githubusercontent.com/gissily/properties-tools/main/install.sh); \
     bash <(curl -sL https://raw.githubusercontent.com/gissily/versions-tools/main/install.sh);
 
