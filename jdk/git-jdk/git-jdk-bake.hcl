@@ -45,7 +45,7 @@ target "git-jdk" {
     args = {
         BASE_IMAGE = item.base
     }
-    platforms = ["linux/amd64", "linux/arm64"]
+    platforms = ["linux/amd64"]
 
     tags = [
         "${CI_REGISTRY}/opcal/git-jdk:${item.version}",
