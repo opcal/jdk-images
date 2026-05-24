@@ -31,12 +31,20 @@ target "jre-ubuntu" {
                 os = "noble"
             },
             {
+                version = "11-jre"
+                os = "resolute"
+            },
+            {
                 version = "17-jre"
                 os = "jammy"
             },
             {
                 version = "17-jre"
                 os = "noble"
+            },
+            {
+                version = "17-jre"
+                os = "resolute"
             },
             {
                 version = "21-jre"
@@ -47,12 +55,20 @@ target "jre-ubuntu" {
                 os = "noble"
             },
             {
+                version = "21-jre"
+                os = "resolute"
+            },
+            {
                 version = "25-jre"
                 os = "jammy"
             },
             {
                 version = "25-jre"
                 os = "noble"
+            },
+            {
+                version = "25-jre"
+                os = "resolute"
             }
         ]
     }

@@ -31,12 +31,20 @@ target "jdk-ubuntu" {
                 os = "noble"
             },
             {
+                version = "11-jdk"
+                os = "resolute"
+            },
+            {
                 version = "17-jdk"
                 os = "jammy"
             },
             {
                 version = "17-jdk"
                 os = "noble"
+            },
+            {
+                version = "17-jdk"
+                os = "resolute"
             },
             {
                 version = "21-jdk"
@@ -47,12 +55,20 @@ target "jdk-ubuntu" {
                 os = "noble"
             },
             {
+                version = "21-jdk"
+                os = "resolute"
+            },
+            {
                 version = "25-jdk"
                 os = "jammy"
             },
             {
                 version = "25-jdk"
                 os = "noble"
+            },
+             {
+                version = "25-jdk"
+                os = "resolute"
             }
         ]
     }
