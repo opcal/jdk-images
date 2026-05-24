@@ -1,4 +1,4 @@
-FROM ghcr.io/opcal/ubuntu:noble AS builder
+FROM ghcr.io/opcal/ubuntu:resolute AS builder
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
@@ -42,7 +42,7 @@ RUN set -eux; \
     apt-get -y autoremove ; \
     rm -rf /var/lib/apt/lists/* ;
 
-FROM cruizba/ubuntu-dind:noble-latest
+FROM cruizba/ubuntu-dind:resolute-latest
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
