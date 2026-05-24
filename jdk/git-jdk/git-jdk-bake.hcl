@@ -15,7 +15,7 @@ variable "TIMESTAMP" {
 }
 
 variable "LATEST_OS" {
-    default = "noble"
+    default = "resolute"
 }
 
 target "git-jdk" {
