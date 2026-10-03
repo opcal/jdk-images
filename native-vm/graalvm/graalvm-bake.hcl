@@ -23,11 +23,11 @@ target "graalvm" {
     matrix = {
         item = [
             {
-                base = "ghcr.io/opcal/ubuntu:noble"
+                base = "ghcr.io/opcal/ubuntu:resolute"
                 version = "21"
             },
             {
-                base = "ghcr.io/opcal/ubuntu:noble"
+                base = "ghcr.io/opcal/ubuntu:resolute"
                 version = "25"
             }
         ]
